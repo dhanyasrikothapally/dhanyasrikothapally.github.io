@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dhanya Sri Kothapally</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #1a1a1a;
+      --accent: #00bcd4;
+      --accent2: #0097a7;
+      --text: #f0f0f0;
+      --muted: #888;
+      --border: #222;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--accent); letter-spacing: 1px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: radial-gradient(ellipse at top, #0d2b30 0%, var(--bg) 60%);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(0,188,212,0.04) 0%, transparent 60%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-greeting {
+      font-size: 1rem; color: var(--accent);
+      letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-title {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--muted); max-width: 700px;
+      margin: 0 auto 0.5rem;
+      font-weight: 400;
+    }
+    .hero-edu {
+      font-size: 0.85rem; color: #555;
+      max-width: 650px; margin: 0 auto 2.5rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 0.75rem 2rem; border-radius: 50px;
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.3s; border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #000;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid var(--accent); color: var(--accent);
+      background: transparent;
+    }
+    .btn-outline:hover { background: rgba(0,188,212,0.1); transform: translateY(-2px); }
+
+    /* SOCIAL */
+    .social-row {
+      display: flex; gap: 1.2rem; justify-content: center;
+      margin-top: 2.5rem;
+    }
+    .social-row a {
+      width: 42px; height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none;
+      transition: all 0.3s;
+    }
+    .social-row a:hover {
+      border-color: var(--accent); color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-size: 2rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .section-title span { color: var(--accent); }
+    .section-line {
+      width: 50px; height: 3px;
+      background: var(--accent); margin-bottom: 3rem;
+      border-radius: 2px;
+    }
+
+    /* ABOUT */
+    #about { max-width: 1100px; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+    }
+    .about-text p {
+      color: var(--muted); margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .about-text .placeholder {
+      background: var(--bg3);
+      border: 1px dashed var(--border);
+      border-radius: 8px; padding: 1.5rem;
+      color: #444; font-size: 0.85rem; text-align: center;
+    }
+    .about-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .about-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .about-card i { color: var(--accent); font-size: 1.3rem; min-width: 24px; }
+    .about-card h4 { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.1rem; }
+    .about-card p { font-size: 0.9rem; font-weight: 500; }
+
+    /* SKILLS */
+    #skills { background: var(--bg2); max-width: 100%; padding: 5rem 2rem; }
+    .skills-inner { max-width: 1100px; margin: 0 auto; }
+    .skills-placeholder {
+      background: var(--bg3);
+      border: 1px dashed var(--border);
+      border-radius: 12px; padding: 3rem;
+      text-align: center; color: #444;
+    }
+    .skills-placeholder i { font-size: 2rem; color: var(--border); margin-bottom: 1rem; display: block; }
+
+    /* PROJECTS */
+    .projects-placeholder {
+      background: var(--bg3);
+      border: 1px dashed var(--border);
+      border-radius: 12px; padding: 3rem;
+      text-align: center; color: #444;
+    }
+    .projects-placeholder i { font-size: 2rem; color: var(--border); margin-bottom: 1rem; display: block; }
+
+    /* ACTIVITIES */
+    #activities { background: var(--bg2); max-width: 100%; padding: 5rem 2rem; }
+    .activities-inner { max-width: 1100px; margin: 0 auto; }
+    .activities-placeholder {
+      background: var(--bg3);
+      border: 1px dashed var(--border);
+      border-radius: 12px; padding: 3rem;
+      text-align: center; color: #444;
+    }
+    .activities-placeholder i { font-size: 2rem; color: var(--border); margin-bottom: 1rem; display: block; }
+
+    /* CONTACT */
+    #contact { text-align: center; }
+    .contact-text { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+    .contact-links {
+      display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 50px; color: var(--text);
+      text-decoration: none; font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .contact-link i { color: var(--accent); }
+    .contact-link:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      background: rgba(0,188,212,0.05);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: #444; font-size: 0.8rem;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">DSK</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Welcome to my portfolio</p>
+      <h1 class="hero-name">Dhanya Sri Kothapally</h1>
+      <p class="hero-title">Data Engineer & MLOps @ CREWASIS</p>
+      <p class="hero-edu">
+        MS in Data Analytics (Applied Machine Intelligence) · Northeastern University, Boston, USA<br/>
+        B.Tech in Artificial Intelligence · Anurag University, Telangana, India
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="social-row">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/dhanyasrikothapally/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:dhanyasrikothapally@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="section-line"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="placeholder">
+          <i class="fas fa-pen" style="color:#333; margin-bottom:0.5rem; display:block"></i>
+          Your bio goes here — tell visitors who you are, what drives you, and what you're passionate about. This section will be updated soon!
+        </div>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <i class="fas fa-briefcase"></i>
+          <div>
+            <h4>Current Role</h4>
+            <p>Data Engineer / MLOps @ CREWASIS</p>
+          </div>
+        </div>
+        <div class="about-card">
+          <i class="fas fa-graduation-cap"></i>
+          <div>
+            <h4>Masters</h4>
+            <p>MPS Data Analytics · Northeastern University</p>
+          </div>
+        </div>
+        <div class="about-card">
+          <i class="fas fa-university"></i>
+          <div>
+            <h4>Bachelors</h4>
+            <p>B.Tech AI · Anurag University, India</p>
+          </div>
+        </div>
+        <div class="about-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Location</h4>
+            <p>Boston, Massachusetts, USA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <div id="skills">
+    <div class="skills-inner">
+      <h2 class="section-title">My <span>Skills</span></h2>
+      <div class="section-line"></div>
+      <div class="skills-placeholder">
+        <i class="fas fa-code"></i>
+        Skills section coming soon — technical skills, tools, and more will be added here!
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <div class="section-line"></div>
+    <div class="projects-placeholder">
+      <i class="fas fa-folder-open"></i>
+      Projects coming soon — your work will be showcased here with descriptions and links!
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <div id="activities">
+    <div class="activities-inner">
+      <h2 class="section-title">Activities & <span>Interests</span></h2>
+      <div class="section-line"></div>
+      <div class="activities-placeholder">
+        <i class="fas fa-star"></i>
+        Activities, hobbies, achievements and more coming soon!
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Get In <span>Touch</span></h2>
+    <div class="section-line" style="margin: 0 auto 2rem;"></div>
+    <p class="contact-text">Feel free to reach out for collaborations, opportunities, or just a hello!</p>
+    <div class="contact-links">
+      <a href="mailto:dhanyasrikothapally@gmail.com" class="contact-link">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="https://github.com/dhanyasrikothapally" target="_blank" class="contact-link">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/dhanyasrikothapally/" target="_blank" class="contact-link">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://in.pinterest.com/dhanyasrikothapally/" target="_blank" class="contact-link">
+        <i class="fab fa-pinterest"></i> Pinterest
+      </a>
+      <a href="https://medium.com/@dhanyasrikothapally" target="_blank" class="contact-link">
+        <i class="fab fa-medium"></i> Medium
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Dhanya Sri Kothapally · Built with ❤️ and hosted on GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
