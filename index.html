@@ -58,23 +58,22 @@
       position:fixed; top:0; width:100%; z-index:100;
       padding:1.2rem 3rem; display:flex; justify-content:space-between; align-items:center;
       transition:all 0.4s;
-      background:rgba(8,8,8,0.85); backdrop-filter:blur(20px);
-      border-bottom:1px solid var(--border);
+      background:transparent;
+      border-bottom:none;
     }
-    nav.scrolled { background:rgba(8,8,8,0.97); }
+    nav.scrolled { background:rgba(8,8,8,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
     .logo { font-size:1.1rem; font-weight:800; color:var(--text); letter-spacing:2px; text-transform:uppercase; }
     .logo span { color:var(--accent); }
     .nav-links { display:flex; gap:2.5rem; list-style:none; }
-    .nav-links a { color:var(--muted); text-decoration:none; font-size:0.8rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; transition:color 0.3s; position:relative; }
+    .nav-links a { color:#ffffff; text-decoration:none; font-size:0.95rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; transition:color 0.3s; position:relative; text-shadow:0 1px 4px rgba(0,0,0,0.8); }
     .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--accent); transition:width 0.3s; }
     .nav-links a:hover { color:var(--text); }
     .nav-links a:hover::after { width:100%; }
 
-    /* HERO */
     #hero {
       min-height:100vh; display:flex; align-items:center;
-      justify-content:space-between;
-      padding:0 3rem; position:relative; overflow:hidden; z-index:1; gap:4rem;
+      justify-content:flex-start;
+      padding:0 3rem; position:relative; overflow:hidden; z-index:1;
       background:#080808;
     }
     .hero-video-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
@@ -199,19 +198,124 @@
     .medium-item a { color:#ffffff; font-size:1rem; font-weight:500; display:block; margin-bottom:3px; line-height:1.5; }
     .medium-item span { font-size:0.85rem; color:#aaa; }
     .li-text { font-size:0.95rem; color:#d0d0d0; line-height:1.7; margin-bottom:1rem; }
-    .live-card-header h3 { font-size:1rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; flex:1; }
+    .live-card-header h3 { font-size:1.2rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; flex:1; }
+    .medium-item a { color:#ffffff; font-size:1.1rem; font-weight:500; display:block; margin-bottom:5px; line-height:1.6; }
+    .medium-item span { font-size:0.9rem; color:#aaa; }
+    .li-name { font-size:1rem; font-weight:700; }
+    .li-role { font-size:0.9rem; color:var(--muted); }
+    .li-text { font-size:1rem; color:#d0d0d0; line-height:1.8; margin-bottom:1rem; }
+    .li-btn { font-size:0.9rem; padding:0.6rem 1.4rem; }
+    .view-more { font-size:0.9rem; color:var(--accent); }
     .contact-sub { color:#d0d0d0; margin-bottom:2rem; font-size:1.1rem; }
     .contact-link { font-size:1rem; }
     .about-placeholder { font-size:1rem; color:#aaa; }
 
-    /* FOOTER FIX */
-    footer { text-align:center; padding:1.5rem 3rem; border-top:1px solid #333; color:#aaaaaa; font-size:0.9rem; letter-spacing:1px; position:relative; z-index:1; }
+    footer { text-align:center; padding:1.5rem 3rem; border-top:1px solid #444; background:rgba(0,0,0,0.8); color:#ffffff; font-size:0.95rem; letter-spacing:1px; position:relative; z-index:1; }
 
-    /* REMOVE EXTRA PADDING FROM WRAPPERS */
-    #live.section-wrap, #about.section-wrap, #experience.section-wrap,
-    #skills.section-wrap, #projects.section-wrap, #activities.section-wrap { padding:2.5rem 3rem; }
-    .section-bg .section-wrap { padding:2.5rem 3rem; }
-    /* FONTS - INCREASED */
+    /* ── MOBILE RESPONSIVE ── */
+    @media(max-width:768px) {
+      /* NAVBAR */
+      nav { padding:0.8rem 1.2rem; }
+      .logo { font-size:1rem; }
+
+      /* HERO - clean, no photo, centered text */
+      #hero { flex-direction:column; padding:5rem 1.5rem 3rem; gap:1rem; justify-content:center; text-align:center; min-height:100vh; align-items:center; }
+      .hero-photo-wrap { display:none; }
+      .hero-name { font-size:clamp(2.5rem,11vw,3.8rem); letter-spacing:-1px; }
+      .hero-content { max-width:100%; }
+      .hero-tag { font-size:0.7rem; padding:0.3rem 0.8rem; }
+      .hero-edu { font-size:0.88rem; line-height:1.8; }
+      .hero-buttons { justify-content:center; gap:0.8rem; flex-wrap:wrap; }
+      .btn { padding:0.7rem 1.5rem; font-size:0.82rem; }
+      .social-row { justify-content:center; gap:0.8rem; margin-top:1.5rem; }
+      .social-row a { width:40px; height:40px; }
+
+      /* ABOUT - show photo here on mobile */
+      .about-grid { grid-template-columns:1fr; gap:1.5rem; }
+      .about-mobile-photo { display:flex; justify-content:center; margin-bottom:1.5rem; }
+      .about-mobile-photo img { width:140px; height:170px; object-fit:cover; object-position:center top; border-radius:12px; border:2px solid #333; }
+
+      /* SECTIONS */
+      .section-wrap { padding:2rem 1.2rem; }
+      .section-title { font-size:clamp(1.8rem,8vw,2.5rem); }
+      .section-label { font-size:0.75rem; }
+
+      /* EXPERIENCE */
+      .exp-item { flex-direction:column; gap:1rem; padding:1.5rem 0; }
+      .exp-header { flex-direction:column; gap:0.3rem; }
+      .exp-logo { width:40px; height:40px; }
+      .exp-title { font-size:1rem; }
+      .exp-bullets li { font-size:0.95rem; }
+
+      /* SKILLS */
+      .skills-pills { gap:0.5rem; }
+      .skill-pill { font-size:0.85rem; padding:0.4rem 0.9rem; }
+      .ticker-item { font-size:0.9rem; }
+      .skills-category h4 { font-size:0.8rem; }
+
+      /* PROJECTS */
+      .project-item { flex-direction:column; padding:1.2rem; gap:0.8rem; }
+      .project-num { font-size:2rem; min-width:auto; }
+      .project-item:hover { padding-left:1.2rem; }
+      .project-arrow { display:none; }
+      .project-info h3 { font-size:1rem; }
+      .project-info p { font-size:0.9rem; }
+      .tag { font-size:0.78rem; padding:0.25rem 0.7rem; }
+
+      /* LEADERSHIP */
+      .leadership-grid { grid-template-columns:1fr; gap:1rem; }
+      .leadership-card { height:240px; }
+      .leadership-card-title { font-size:1rem; }
+
+      /* MODAL */
+      .modal { border-radius:12px; margin:0.5rem; }
+      .modal-body { padding:1rem; }
+      .modal-title { font-size:1.2rem; }
+      .modal-gallery { grid-template-columns:repeat(2,1fr); gap:0.4rem; }
+      .modal-overlay { padding:0.3rem; align-items:flex-end; }
+      .modal { max-height:95vh; border-radius:16px 16px 0 0; }
+
+      /* LIVE */
+      .live-card { padding:1rem; }
+      .live-card-header h3 { font-size:0.9rem; }
+      .medium-item a { font-size:0.9rem; }
+      .photo-card { width:160px; height:200px; }
+
+      /* CONTACT */
+      .contact-big { font-size:clamp(1.8rem,9vw,3rem); }
+      .contact-links { flex-direction:column; align-items:center; gap:0.7rem; }
+      .contact-link { width:100%; max-width:260px; justify-content:center; font-size:0.9rem; padding:0.7rem 1rem; }
+
+      /* FOOTER */
+      footer { padding:1rem; font-size:0.8rem; }
+
+      /* LIGHTBOX */
+      .lightbox-arrow { width:36px; height:36px; font-size:0.9rem; }
+      .lightbox-prev { left:0.3rem; }
+      .lightbox-next { right:0.3rem; }
+      .lightbox-img { max-width:95vw; max-height:85vh; }
+    }
+
+    .mobile-photo { display:none; }
+    .desktop-photo { display:block; }
+    .about-mobile-photo { display:none; }
+    @media(max-width:768px) {
+      .mobile-photo { display:block; }
+      .desktop-photo { display:none; }
+      .about-mobile-photo { display:flex; }
+    }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:200; }
+    .hamburger span { width:24px; height:2px; background:var(--text); border-radius:2px; transition:all 0.3s; display:block; }
+    @media(max-width:768px) {
+      .hamburger { display:flex; }
+      .nav-links { display:none; position:fixed; top:0; left:0; width:100%; height:100vh; background:rgba(8,8,8,0.98); flex-direction:column; align-items:center; justify-content:center; gap:2.5rem; z-index:150; }
+      .nav-links.open { display:flex; }
+      .nav-links a { font-size:1.2rem; color:var(--text); }
+    }
+    /* HERO PHOTO - FORCE RIGHT EDGE */
+    .hero-photo-wrap { position:absolute !important; right:0 !important; top:0 !important; left:auto !important; z-index:1; width:55% !important; height:100% !important; }
+    .hero-photo-inner { width:100% !important; height:100% !important; overflow:hidden; }
+    .hero-photo { width:100% !important; height:100% !important; max-width:none !important; object-fit:cover !important; object-position:center 20% !important; display:block; filter:brightness(1.1); }
     .exp-bullets li { font-size:1rem; color:var(--muted); padding-left:1.2rem; position:relative; line-height:1.9; }
     .exp-title { font-size:1.2rem; font-weight:700; }
     .exp-company { font-size:1rem; color:var(--muted); margin-bottom:0.8rem; }
@@ -237,6 +341,30 @@
     .timeline-org { font-size:0.95rem; color:var(--muted); margin-bottom:0.8rem; }
     .timeline-bullets li { font-size:1rem; color:var(--muted); padding-left:1rem; line-height:1.9; }
     .skill-pill:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+    /* EXPERIENCE CARDS (hybrid: teaser + modal) */
+    .exp-cards { display:flex; flex-direction:column; gap:1.2rem; }
+    .exp-card { display:flex; gap:1.5rem; background:rgba(255,255,255,0.02); backdrop-filter:blur(10px); border:1px solid var(--border); border-radius:12px; padding:1.6rem 1.8rem; cursor:pointer; transition:all 0.35s; align-items:flex-start; }
+    .exp-card:hover { border-color:var(--accent); background:rgba(255,255,255,0.04); transform:translateX(6px); box-shadow:0 12px 30px rgba(0,0,0,0.35); }
+    .exp-card-logo { width:50px; height:50px; border-radius:10px; background:rgba(255,255,255,0.06); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; }
+    .exp-card-logo i { color:var(--accent); font-size:1.3rem; }
+    .exp-card-logo img { width:100%; height:100%; object-fit:contain; padding:6px; }
+    .exp-card-body { flex:1; min-width:0; }
+    .exp-card-head { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.2rem; }
+    .exp-card-role { font-size:1.25rem; font-weight:700; color:#fff; }
+    .exp-card-date { font-size:0.78rem; color:var(--accent); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); padding:0.25rem 0.85rem; border-radius:50px; white-space:nowrap; }
+    .exp-card-company { font-size:0.95rem; color:#bbb; margin-bottom:0.9rem; }
+    .exp-card-teaser { list-style:none; display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1rem; }
+    .exp-card-teaser li { font-size:0.95rem; color:#d0d0d0; line-height:1.7; padding-left:1.3rem; position:relative; }
+    .exp-card-teaser li::before { content:'\25B9'; position:absolute; left:0; color:var(--accent); }
+    .exp-card-btn { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:var(--accent); letter-spacing:1px; text-transform:uppercase; font-weight:600; }
+    .exp-card-btn i { transition:transform 0.3s; }
+    .exp-card:hover .exp-card-btn i { transform:translateX(4px); }
+    @media(max-width:768px){
+      .exp-card { flex-direction:column; gap:1rem; padding:1.3rem; }
+      .exp-card:hover { transform:none; }
+      .exp-card-role { font-size:1.1rem; }
+    }
 
     /* LEADERSHIP CARDS */
     .leadership-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
@@ -265,6 +393,8 @@
     .modal-cover { width:100%; max-height:400px; object-fit:contain; border-radius:16px 16px 0 0; display:block; background:#0d1a1b; }
     .modal-cover-placeholder { width:100%; height:280px; background:linear-gradient(135deg,#0d2b30,var(--bg3)); display:flex; align-items:center; justify-content:center; border-radius:16px 16px 0 0; }
     .modal-cover-placeholder i { font-size:4rem; color:rgba(0,188,212,0.2); }
+    .modal-cover-logo { width:100%; height:240px; background:linear-gradient(135deg,#0d2b30,var(--bg3)); display:flex; align-items:center; justify-content:center; border-radius:16px 16px 0 0; padding:2.5rem; }
+    .modal-cover-logo img { max-width:60%; max-height:100%; object-fit:contain; }
     .modal-body { padding:2rem; border-top:1px solid var(--border); }
     .modal-tag { font-size:0.7rem; color:var(--accent); letter-spacing:3px; text-transform:uppercase; margin-bottom:0.5rem; }
     .modal-title { font-size:1.6rem; font-weight:800; margin-bottom:0.3rem; letter-spacing:-0.5px; }
@@ -300,7 +430,7 @@
     .photo-track { display:flex; gap:1rem; animation:photoScroll 25s linear infinite; width:max-content; }
     .photo-track:hover { animation-play-state:paused; }
     @keyframes photoScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    .photo-card { width:250px; height:300px; border-radius:8px; overflow:hidden; background:var(--bg3); border:1px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem; transition:transform 0.3s; }
+    .photo-card { width:250px; height:300px; border-radius:8px; overflow:hidden; background:var(--bg3); border:1px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem; transition:transform 0.3s; cursor:pointer; }
     .photo-card:hover { transform:scale(1.03); }
     .photo-card img { width:100%; height:100%; object-fit:cover; }
     .photo-card-placeholder { color:#2a2a2a; text-align:center; }
@@ -365,15 +495,18 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="logo">D<span>S</span>K</div>
-  <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#activities">Leadership</a></li>
-    <li><a href="#live">Live</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero" onclick="toggleMenu()">Home</a></li>
+    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+    <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+    <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+    <li><a href="#activities" onclick="toggleMenu()">Leadership</a></li>
+    <li><a href="#live" onclick="toggleMenu()">Live</a></li>
+    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
   </ul>
 </nav>
 
@@ -408,7 +541,10 @@
   </div>
   <div class="hero-photo-wrap">
     <div class="hero-photo-inner">
-      <img src="assets/images/profile.jpg" alt="Dhanya Sri Kothapally" class="hero-photo"/>
+      <!-- Desktop image -->
+      <img src="assets/images/profile.jpg" alt="Dhanya Sri Kothapally" class="hero-photo desktop-photo"/>
+      <!-- Mobile image - add a different closer headshot as profile-mobile.jpg -->
+      <img src="assets/images/profile.jpg" alt="Dhanya Sri Kothapally" class="hero-photo mobile-photo"/>
     </div>
   </div>
 </section>
@@ -427,6 +563,9 @@
       <p class="section-label">Who I Am</p>
       <h2 class="section-title">About <span>Me</span></h2>
       <div class="section-line"></div>
+      <div class="about-mobile-photo">
+        <img src="assets/images/profile.jpg" alt="Dhanya Sri Kothapally"/>
+      </div>
       <div class="about-grid">
         <div class="about-text">
           <div class="about-placeholder">
@@ -451,39 +590,73 @@
     <p class="section-label">Where I've Worked</p>
     <h2 class="section-title">Work <span>Experience</span></h2>
     <div class="section-line"></div>
-    <div class="exp-list">
+    <div class="exp-cards">
 
-      <div class="exp-item">
-        <div class="exp-logo"><i class="fas fa-shield-halved"></i></div>
-        <div class="exp-content">
-          <div class="exp-header">
-            <span class="exp-title">Proctor</span>
-            <span class="exp-date">Dec 2024 – Present</span>
+      <!-- Crewasis AI -->
+      <div class="exp-card" onclick="openModal('exp1')">
+        <div class="exp-card-logo"><img src="assets/images/logos/crewasis.png" alt="Crewasis AI"/></div>
+        <div class="exp-card-body">
+          <div class="exp-card-head">
+            <span class="exp-card-role">Data Engineering / MLOps Co-op</span>
+            <span class="exp-card-date">Jan 2026 – Present</span>
           </div>
-          <p class="exp-company">Residential Security Office · Northeastern University, Boston, MA</p>
-          <ul class="exp-bullets">
-            <li>Consistently provided resident-centered service at the front desk, verifying credentials, managing guest access, and addressing inquiries with professionalism and empathy.</li>
-            <li>Completed 428+ hours of proctoring service and 40+ hours of standby coverage, demonstrating reliability and commitment to campus safety across all shifts.</li>
-            <li>Responded to alarms and suspicious activities, documenting incidents and escalating concerns to supervisors and NUPD in accordance with established protocols.</li>
-            <li>Guided and supported newly hired proctors by clarifying operational procedures and providing on-shift assistance, contributing to smoother team onboarding.</li>
+          <p class="exp-card-company">Crewasis AI · New York</p>
+          <ul class="exp-card-teaser">
+            <li>Launched three production AI/data pipelines (StatAgent, Winston Pro, Model 3) using AWS Lambda, ECS Fargate, Step Functions, S3, and Bedrock to automate client data workflows, eliminating 4–6 hours/week of manual execution and establishing a reusable serverless pattern across the engineering team.</li>
+            <li>Built Winston Pro's Retrieval-Augmented Generation (RAG) pipeline by ingesting YouTube transcripts, chunking content, generating embeddings via AWS Bedrock Titan, and storing vectors in PostgreSQL pgvector for semantic search, enabling enterprise clients to query project datasets through a conversational AI interface.</li>
           </ul>
+          <span class="exp-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
         </div>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-logo"><i class="fas fa-robot"></i></div>
-        <div class="exp-content">
-          <div class="exp-header">
-            <span class="exp-title">AI/ML Engineer</span>
-            <span class="exp-date">Sep 2023</span>
+      <!-- McKinsey -->
+      <div class="exp-card" onclick="openModal('exp2')">
+        <div class="exp-card-logo"><img src="assets/images/logos/mckinsey.png" alt="McKinsey.org"/></div>
+        <div class="exp-card-body">
+          <div class="exp-card-head">
+            <span class="exp-card-role">Leadership & Problem Solving Development</span>
+            <span class="exp-card-date">Ongoing</span>
           </div>
-          <p class="exp-company">Technologics Global Pvt. Ltd. · India</p>
-          <ul class="exp-bullets">
-            <li>Engineered a high-accuracy multi-class classification model (95%) using SVM on the Iris dataset to categorize flower species based on petal and sepal dimensions.</li>
-            <li>Implemented a structured ML pipeline involving data wrangling, feature selection, and normalization using Python, pandas, scikit-learn, and NumPy.</li>
-            <li>Compared model performance across linear, polynomial, and RBF kernels, visualizing decision boundaries using matplotlib.</li>
-            <li>Assessed model quality through classification reports and visual insights, reinforcing understanding of supervised learning techniques.</li>
+          <p class="exp-card-company">McKinsey.org Forward Program</p>
+          <ul class="exp-card-teaser">
+            <li>Selected for McKinsey.org's competitive 10-week Forward Program, completing modules in structured problem-solving, communicating for impact, adaptability & resilience, and digital & AI essentials across self-paced courses and mandatory live webinars.</li>
+            <li>Applied structured problem-solving frameworks, including hypothesis-led analysis, issue decomposition, and evidence-based recommendation development, to a real-world case assignment, strengthening the ability to break down ambiguous problems and synthesize findings into actionable decisions.</li>
           </ul>
+          <span class="exp-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <!-- Proctor -->
+      <div class="exp-card" onclick="openModal('exp3')">
+        <div class="exp-card-logo"><img src="assets/images/logos/northeastern.png" alt="Northeastern University"/></div>
+        <div class="exp-card-body">
+          <div class="exp-card-head">
+            <span class="exp-card-role">Proctor</span>
+            <span class="exp-card-date">Dec 2024 – Present</span>
+          </div>
+          <p class="exp-card-company">Residential Security Office · Northeastern University, Boston, MA</p>
+          <ul class="exp-card-teaser">
+            <li>Completed 428+ hours of proctoring service and 40+ hours of standby coverage, demonstrating reliability and commitment to campus safety across all shifts.</li>
+            <li>Responded to alarms and suspicious activities, documenting incidents and escalating concerns to supervisors and NUPD in accordance with established protocols.</li>
+          </ul>
+          <span class="exp-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <!-- AI/ML Engineer -->
+      <div class="exp-card" onclick="openModal('exp4')">
+        <div class="exp-card-logo"><img src="assets/images/logos/technologics.png" alt="Technologics Global"/></div>
+        <div class="exp-card-body">
+          <div class="exp-card-head">
+            <span class="exp-card-role">AI/ML Engineer</span>
+            <span class="exp-card-date">Sep 2023</span>
+          </div>
+          <p class="exp-card-company">Technologics Global Pvt. Ltd. · India</p>
+          <ul class="exp-card-teaser">
+            <li>Developed a high-accuracy multi-class classification model (95%) using Support Vector Machine (SVM) on the Iris dataset to categorize flower species based on petal and sepal dimensions.</li>
+            <li>Implemented a structured ML pipeline involving data wrangling, feature selection, and data normalization on a dataset of 150 samples across 3 classes and 4 features, followed by exploratory data analysis (EDA), model training, and performance evaluation using Python, pandas, scikit-learn, and NumPy.</li>
+          </ul>
+          <span class="exp-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
         </div>
       </div>
 
@@ -592,192 +765,98 @@
       <p class="section-label">What I've Built</p>
       <h2 class="section-title">My <span>Projects</span></h2>
       <div class="section-line"></div>
-      <div class="projects-list">
-
-        <!-- 01 -->
-        <div class="project-item">
-          <div class="project-num">01</div>
-          <div class="project-info">
-            <h3>Outamation – AI Document Intelligence</h3>
-            <p>Converted 200+ page mortgage documents into structured, searchable data using OCR, RAG workflows and LlamaIndex. Benchmarked LLMs including Mistral and Phi-2.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">🤖 GenAI</span>
-              <span class="tag">RAG</span><span class="tag">LlamaIndex</span><span class="tag">PyMuPDF</span><span class="tag">Python</span><span class="tag">OCR</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+      <!-- TOP 3 VISIBLE CARDS -->
+      <div class="leadership-grid" style="margin-bottom:1.5rem;">
+        <div class="leadership-card" onclick="openModal('proj1')">
+          <div class="leadership-card-placeholder"><i class="fas fa-robot"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">🤖 GenAI · RAG · Python</p>
+            <h3 class="leadership-card-title">Outamation – AI Document Intelligence</h3>
+            <p class="leadership-card-org">Externship Project</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Impact</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">200+ pages</p>
-            <p style="font-size:0.72rem;color:var(--muted);">processed per doc</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
-
-        <!-- 02 -->
-        <div class="project-item">
-          <div class="project-num">02</div>
-          <div class="project-info">
-            <h3>Geospatial Retail Expansion – Intelmatix</h3>
-            <p>Analyzed 3M+ SafeGraph mobility records and U.S. Census data to identify high-potential NYC neighborhoods for Victoria's Secret retail expansion.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">🗺️ Geospatial</span>
-              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Tableau</span><span class="tag">NumPy</span><span class="tag">GIS</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+        <div class="leadership-card" onclick="openModal('proj2')">
+          <div class="leadership-card-placeholder"><i class="fas fa-map-location-dot"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">🗺️ Geospatial · Tableau · Python</p>
+            <h3 class="leadership-card-title">Geospatial Retail Expansion – Intelmatix</h3>
+            <p class="leadership-card-org">Apprenticeship Project</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Impact</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">3M+ records</p>
-            <p style="font-size:0.72rem;color:var(--muted);">analyzed</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
-
-        <!-- 03 -->
-        <div class="project-item">
-          <div class="project-num">03</div>
-          <div class="project-info">
-            <h3>EV Adoption & Charging Infrastructure</h3>
-            <p>Synthesized 179,000+ BEV registrations and 700+ ZIP codes to assess EV market trends and infrastructure gaps across Washington State.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">📊 Analytics</span>
-              <span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">Data Viz</span><span class="tag">GIS</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+        <div class="leadership-card" onclick="openModal('proj3')">
+          <div class="leadership-card-placeholder"><i class="fas fa-bolt"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">📊 Analytics · Tableau · GIS</p>
+            <h3 class="leadership-card-title">EV Adoption & Charging Infrastructure</h3>
+            <p class="leadership-card-org">Data Analytics Project</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Impact</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">179K+ EVs</p>
-            <p style="font-size:0.72rem;color:var(--muted);">analyzed</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
+      </div>
 
-        <!-- 04 -->
-        <div class="project-item">
-          <div class="project-num">04</div>
-          <div class="project-info">
-            <h3>Financial Time-Series Prediction – FastAPI</h3>
-            <p>Built an LSTM model to predict NASDAQ closing prices from 30-day sequences, deployed as a production-ready FastAPI microservice with Swagger UI.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">💹 Finance AI</span>
-              <span class="tag">PyTorch</span><span class="tag">LSTM</span><span class="tag">FastAPI</span><span class="tag">NumPy</span><span class="tag">REST API</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+      <!-- SEE MORE BUTTON -->
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <button onclick="toggleMoreProjects()" id="seeMoreBtn" class="btn btn-outline" style="cursor:pointer;">
+          <i class="fas fa-plus" style="margin-right:0.5rem;"></i> See More Projects
+        </button>
+      </div>
+
+      <!-- HIDDEN PROJECTS -->
+      <div class="leadership-grid" id="moreProjects" style="display:none;margin-bottom:1.5rem;">
+        <div class="leadership-card" onclick="openModal('proj4')">
+          <div class="leadership-card-placeholder"><i class="fas fa-chart-line"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">💹 PyTorch · LSTM · FastAPI</p>
+            <h3 class="leadership-card-title">Financial Time-Series Prediction</h3>
+            <p class="leadership-card-org">ML Engineering Project</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Impact</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">30-day</p>
-            <p style="font-size:0.72rem;color:var(--muted);">sequence prediction</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
-
-        <!-- 05 -->
-        <div class="project-item">
-          <div class="project-num">05</div>
-          <div class="project-info">
-            <h3>Conversational AI – BCG GenAI Simulation</h3>
-            <p>Built a financial chatbot analyzing multi-year SEC 10-K data from Microsoft, Apple and Tesla using rule-based NLP logic and pandas-driven KPI computation.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">💬 NLP</span>
-              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NLP</span><span class="tag">Excel</span><span class="tag">GenAI</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+        <div class="leadership-card" onclick="openModal('proj5')">
+          <div class="leadership-card-placeholder"><i class="fas fa-comments"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">💬 NLP · Pandas · GenAI</p>
+            <h3 class="leadership-card-title">Conversational AI – BCG GenAI</h3>
+            <p class="leadership-card-org">BCG Job Simulation</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Coverage</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">3 Giants</p>
-            <p style="font-size:0.72rem;color:var(--muted);">MSFT · AAPL · TSLA</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
-
-        <!-- 06 -->
-        <div class="project-item">
-          <div class="project-num">06</div>
-          <div class="project-info">
-            <h3>Mental Health Emotion & Risk Classification</h3>
-            <p>End-to-end NLP pipeline on 40K Reddit posts using TF-IDF, Logistic Regression and ULMFiT AWDLSTM deep learning with transfer learning fine-tuning.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">🧠 Deep Learning</span>
-              <span class="tag">NLP</span><span class="tag">PyTorch</span><span class="tag">ULMFiT</span><span class="tag">TF-IDF</span><span class="tag">Python</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+        <div class="leadership-card" onclick="openModal('proj6')">
+          <div class="leadership-card-placeholder"><i class="fas fa-brain"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">🧠 NLP · PyTorch · ULMFiT</p>
+            <h3 class="leadership-card-title">Mental Health Emotion & Risk Classification</h3>
+            <p class="leadership-card-org">Deep Learning Project</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Dataset</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">40K posts</p>
-            <p style="font-size:0.72rem;color:var(--muted);">65.31% accuracy</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
-
-        <!-- 07 -->
-        <div class="project-item">
-          <div class="project-num">07</div>
-          <div class="project-info">
-            <h3>Commute Time Optimization – Hypothesis Testing</h3>
-            <p>Captured 64 real-time commute samples across two transit modes, applying z-tests to confirm subway was 22.7% faster than bus routes in Boston.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">📐 Statistics</span>
-              <span class="tag">R</span><span class="tag">ggplot2</span><span class="tag">Z-Test</span><span class="tag">Data Analysis</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+        <div class="leadership-card" onclick="openModal('proj7')">
+          <div class="leadership-card-placeholder"><i class="fas fa-train-subway"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">📐 R · Z-Test · Statistics</p>
+            <h3 class="leadership-card-title">Commute Time Optimization</h3>
+            <p class="leadership-card-org">Hypothesis Testing Project</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Finding</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">22.7%</p>
-            <p style="font-size:0.72rem;color:var(--muted);">faster by subway</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
-
-        <!-- 08 -->
-        <div class="project-item">
-          <div class="project-num">08</div>
-          <div class="project-info">
-            <h3>Malicious URL Detection</h3>
-            <p>Team-built cybersecurity ML system using CNN for feature extraction and Random Forest for classification to detect and prevent harmful URLs.</p>
-            <div class="project-tags">
-              <span class="tag" style="border-color:rgba(0,188,212,0.4);color:var(--accent);">🔐 Cybersecurity</span>
-              <span class="tag">CNN</span><span class="tag">Random Forest</span><span class="tag">Python</span><span class="tag">scikit-learn</span>
-            </div>
-            <div style="display:flex;gap:0.8rem;margin-top:1rem;">
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fas fa-play"></i> LIVE DEMO</a>
-              <a href="#" class="li-btn" style="font-size:0.72rem;opacity:0.4;cursor:not-allowed;"><i class="fab fa-github"></i> GITHUB</a>
-            </div>
+        <div class="leadership-card" onclick="openModal('proj8')">
+          <div class="leadership-card-placeholder"><i class="fas fa-shield-halved"></i></div>
+          <div class="leadership-card-overlay">
+            <p class="leadership-card-date">🔐 CNN · Random Forest · Python</p>
+            <h3 class="leadership-card-title">Malicious URL Detection</h3>
+            <p class="leadership-card-org">Cybersecurity ML Project</p>
+            <span class="leadership-card-btn">View Details <i class="fas fa-arrow-right"></i></span>
           </div>
-          <div style="text-align:right;min-width:120px;">
-            <p style="font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Method</p>
-            <p style="font-size:1.1rem;font-weight:700;color:var(--accent);">CNN + RF</p>
-            <p style="font-size:0.72rem;color:var(--muted);">hybrid model</p>
-          </div>
-          <i class="fas fa-arrow-right project-arrow"></i>
         </div>
+      </div>
 
+      <!-- GITHUB LINK -->
+      <div style="text-align:center;margin-top:1rem;">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="btn btn-primary">
+          <i class="fab fa-github" style="margin-right:0.5rem;"></i> View All on GitHub
+        </a>
       </div>
     </div>
   </div>
@@ -878,7 +957,7 @@
     <p class="section-label">What I'm Up To</p>
     <h2 class="section-title">Live <span>Activity</span></h2>
     <div class="section-line"></div>
-    <div style="display:flex; flex-direction:column; gap:2rem; max-width:100%">
+    <div style="display:flex; flex-direction:column; gap:2rem; width:100%">
 
       <!-- MEDIUM -->
       <div class="live-card">
@@ -909,28 +988,52 @@
         <a href="https://www.linkedin.com/in/dhanyasrikothapally/" target="_blank" class="view-more">View LinkedIn profile →</a>
       </div>
 
-      <!-- PINTEREST STRIP IN LIVE -->
-      <div class="live-card" style="overflow:hidden; padding-bottom:1.5rem;">
-        <div class="live-card-header">
+      <!-- PHOTOGRAPHY STRIP IN LIVE -->
+      <div class="live-card" style="overflow:hidden; padding-bottom:1.5rem; padding-left:0; padding-right:0;">
+        <div class="live-card-header" style="padding:0 1.8rem;">
           <i class="fab fa-pinterest"></i>
           <h3>Photography</h3>
           <div class="live-dot"></div>
         </div>
-        <p class="section-label" style="margin-bottom:1rem;">Through My Lens</p>
-        <div class="photo-strip" style="padding:0; margin:0 -1.8rem;">
-          <div class="photo-track">
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-mountain-sun"></i><span>Nature</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-place-of-worship"></i><span>Temples</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-camera"></i><span>Landscapes</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-tree"></i><span>Flora</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-cloud-sun"></i><span>Skies</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-water"></i><span>Water</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-mountain-sun"></i><span>Nature</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-place-of-worship"></i><span>Temples</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-camera"></i><span>Landscapes</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-tree"></i><span>Flora</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-cloud-sun"></i><span>Skies</span></div></div>
-            <div class="photo-card"><div class="photo-card-placeholder"><i class="fas fa-water"></i><span>Water</span></div></div>
+        <p class="section-label" style="margin-bottom:1rem; padding:0 1.8rem;">Through My Lens</p>
+        <div class="photo-strip" style="padding:0;">
+          <div class="photo-track" id="photoTrack">
+            <!-- 17 real photos -->
+            <div class="photo-card" onclick="openPhotoLightbox(0)"><img src="assets/images/photography/photo-1.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(1)"><img src="assets/images/photography/photo-2.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(2)"><img src="assets/images/photography/photo-3.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(3)"><img src="assets/images/photography/photo-4.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(4)"><img src="assets/images/photography/photo-5.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(5)"><img src="assets/images/photography/photo-6.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(6)"><img src="assets/images/photography/photo-7.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(7)"><img src="assets/images/photography/photo-8.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(8)"><img src="assets/images/photography/photo-9.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(9)"><img src="assets/images/photography/photo-10.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(10)"><img src="assets/images/photography/photo-11.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(11)"><img src="assets/images/photography/photo-12.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(12)"><img src="assets/images/photography/photo-13.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(13)"><img src="assets/images/photography/photo-14.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(14)"><img src="assets/images/photography/photo-15.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(15)"><img src="assets/images/photography/photo-16.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(16)"><img src="assets/images/photography/photo-17.jpeg" alt="Photography"/></div>
+            <!-- Duplicate set for seamless infinite scroll (click maps to same photo) -->
+            <div class="photo-card" onclick="openPhotoLightbox(0)"><img src="assets/images/photography/photo-1.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(1)"><img src="assets/images/photography/photo-2.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(2)"><img src="assets/images/photography/photo-3.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(3)"><img src="assets/images/photography/photo-4.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(4)"><img src="assets/images/photography/photo-5.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(5)"><img src="assets/images/photography/photo-6.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(6)"><img src="assets/images/photography/photo-7.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(7)"><img src="assets/images/photography/photo-8.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(8)"><img src="assets/images/photography/photo-9.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(9)"><img src="assets/images/photography/photo-10.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(10)"><img src="assets/images/photography/photo-11.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(11)"><img src="assets/images/photography/photo-12.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(12)"><img src="assets/images/photography/photo-13.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(13)"><img src="assets/images/photography/photo-14.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(14)"><img src="assets/images/photography/photo-15.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(15)"><img src="assets/images/photography/photo-16.jpeg" alt="Photography"/></div>
+            <div class="photo-card" onclick="openPhotoLightbox(16)"><img src="assets/images/photography/photo-17.jpeg" alt="Photography"/></div>
           </div>
         </div>
         <a href="https://in.pinterest.com/dhanyasrikothapally/" target="_blank" class="view-more" style="margin-left:1.8rem;">View all on Pinterest →</a>
@@ -958,6 +1061,288 @@
   </div>
 </div>
 
+<!-- PROJECT MODALS -->
+<div class="modal-overlay" id="modal-proj1" onclick="closeModalOutside(event,'proj1')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj1')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-robot" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">GenAI · Externship</p>
+      <h2 class="modal-title">Outamation – AI Document Intelligence</h2>
+      <p class="modal-org"><i class="fas fa-building"></i> Outamation Externship</p>
+      <div class="modal-story">
+        <p>Designed and delivered AI-driven pipelines that convert 200+ page mortgage documents into searchable, structured information by integrating OCR, PDF parsing with PyMuPDF, and Retrieval-Augmented Generation workflows. Built a scalable multi-document retrieval system using LlamaIndex, applying chunk tuning, metadata filtering, and prompt optimization. Benchmarked modern LLMs including Mistral and Phi-2 to determine the most cost-effective and accurate model configurations.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">RAG</span><span class="tag">LlamaIndex</span><span class="tag">PyMuPDF</span><span class="tag">Python</span><span class="tag">OCR</span><span class="tag">Mistral</span><span class="tag">Phi-2</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj1')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj2" onclick="closeModalOutside(event,'proj2')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj2')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-map-location-dot" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">Geospatial · Apprenticeship</p>
+      <h2 class="modal-title">Geospatial Retail Expansion – Intelmatix</h2>
+      <p class="modal-org"><i class="fas fa-building"></i> Intelmatix Apprenticeship</p>
+      <div class="modal-story">
+        <p>Analyzed 3M+ SafeGraph mobility records and U.S. Census data to identify high-potential neighborhoods for Victoria's Secret retail expansion across New York City. Engineered a composite expansion-scoring model in Python using weighted metrics for engagement and visits, uncovering 4 high-opportunity Census Block Groups. Developed interactive Tableau dashboards visualizing location footprints, scoring distributions, and opportunity maps.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Tableau</span><span class="tag">GIS</span><span class="tag">SafeGraph</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj2')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj3" onclick="closeModalOutside(event,'proj3')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj3')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-bolt" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">Analytics · Data Visualization</p>
+      <h2 class="modal-title">EV Adoption & Charging Infrastructure</h2>
+      <p class="modal-org"><i class="fas fa-charging-station"></i> Data Analytics Project</p>
+      <div class="modal-story">
+        <p>Synthesized insights from 179,000+ Battery Electric Vehicles and 700+ Washington ZIP codes to assess market trends and infrastructure readiness. Designed interactive Tableau dashboards revealing EV growth from 2015 to 2024, brand dominance with Tesla at 42.94%, and city-wise charging station availability. Identified high-demand but underserved areas like Mill Creek with 4,209 EVs per station, providing location-optimization recommendations.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">GIS</span><span class="tag">Data Visualization</span><span class="tag">EV Data</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj3')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj4" onclick="closeModalOutside(event,'proj4')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj4')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-chart-line" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">Finance AI · ML Engineering</p>
+      <h2 class="modal-title">Financial Time-Series Prediction – FastAPI</h2>
+      <p class="modal-org"><i class="fas fa-chart-bar"></i> ML Engineering Project</p>
+      <div class="modal-story">
+        <p>Built a complete financial forecasting workflow using PyTorch by training an LSTM model to predict next-day NASDAQ closing prices from a 30-day sequence of past market data. Converted the trained model into a fully functional FastAPI microservice with REST endpoints, enabling real-time predictions through structured JSON requests. Deployed a documented prediction API featuring Swagger UI, health-check endpoints, and cURL-compatible interfaces.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">PyTorch</span><span class="tag">LSTM</span><span class="tag">FastAPI</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">REST API</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj4')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj5" onclick="closeModalOutside(event,'proj5')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj5')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-comments" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">NLP · BCG Simulation</p>
+      <h2 class="modal-title">Conversational AI – BCG GenAI Simulation</h2>
+      <p class="modal-org"><i class="fas fa-building"></i> BCG Job Simulation</p>
+      <div class="modal-story">
+        <p>Built a conversational AI chatbot that analyzed multi-year SEC 10-K data from Microsoft, Apple, and Tesla to provide financial insights for strategic decision-making. Applied data extraction and analysis techniques using pandas and Excel to compute key financial KPIs including multi-year net income trends, revenue growth, and total profitability rankings. Constructed rule-based NLP logic to interpret financial queries and generate automated insight-driven responses.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NLP</span><span class="tag">Excel</span><span class="tag">GenAI</span><span class="tag">SEC 10-K</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj5')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj6" onclick="closeModalOutside(event,'proj6')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj6')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-brain" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">Deep Learning · NLP</p>
+      <h2 class="modal-title">Mental Health Emotion & Risk Classification</h2>
+      <p class="modal-org"><i class="fas fa-heart-pulse"></i> Deep Learning Project</p>
+      <div class="modal-story">
+        <p>Engineered a full end-to-end NLP pipeline on 40K mental-health Reddit posts, performing advanced data preprocessing, class balancing, and linguistic normalization. Designed, trained and evaluated both traditional TF-IDF with Logistic Regression and deep learning architectures using ULMFiT AWDLSTM, improving prediction accuracy from 61.75% to 65.31%. Implemented transfer-learning workflows and fine-tuned pretrained language models on domain-specific data.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">NLP</span><span class="tag">PyTorch</span><span class="tag">ULMFiT</span><span class="tag">TF-IDF</span><span class="tag">Python</span><span class="tag">Reddit Data</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj6')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj7" onclick="closeModalOutside(event,'proj7')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj7')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-train-subway" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">Statistics · R</p>
+      <h2 class="modal-title">Commute Time Optimization – Hypothesis Testing</h2>
+      <p class="modal-org"><i class="fas fa-route"></i> Statistical Analysis Project</p>
+      <div class="modal-story">
+        <p>Captured 64 real-time commute samples across two transit modes over two weekdays and performed time-series comparison using z-tests, confirming that subway travel was 22.7% faster than bus commutes at 11.36 minutes versus 14.7 minutes. Executed full data analysis lifecycle in R including data wrangling, outlier filtering, statistical testing and visualization. Identified statistically significant efficiency gaps between subway and bus routes through z-statistics and p-value validation.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">R</span><span class="tag">ggplot2</span><span class="tag">dplyr</span><span class="tag">Z-Test</span><span class="tag">Statistics</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj7')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj8" onclick="closeModalOutside(event,'proj8')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj8')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-placeholder"><i class="fas fa-shield-halved" style="font-size:4rem;color:rgba(255,255,255,0.1)"></i></div>
+    <div class="modal-body">
+      <p class="modal-tag">Cybersecurity · ML</p>
+      <h2 class="modal-title">Malicious URL Detection</h2>
+      <p class="modal-org"><i class="fas fa-shield"></i> Cybersecurity ML Project</p>
+      <div class="modal-story">
+        <p>Developed an advanced malicious URL detection system utilizing machine learning concepts and algorithms in a team project. Leveraged Convolutional Neural Networks for feature extraction and Random Forest for classification, demonstrating proficiency in applying cutting-edge ML techniques to address cybersecurity challenges. Worked closely with a group of three members to implement models and continuously improve performance.</p>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">CNN</span><span class="tag">Random Forest</span><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Cybersecurity</span>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/dhanyasrikothapally" target="_blank" class="modal-btn modal-btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('proj8')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE MODALS -->
+<div class="modal-overlay" id="modal-exp1" onclick="closeModalOutside(event,'exp1')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('exp1')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-logo"><img src="assets/images/logos/crewasis.png" alt="Crewasis AI"/></div>
+    <div class="modal-body">
+      <p class="modal-tag">Data Engineering / MLOps &middot; Jan 2026 &ndash; Present</p>
+      <h2 class="modal-title">Data Engineering / MLOps Co-op</h2>
+      <p class="modal-org"><i class="fas fa-building"></i> Crewasis AI &middot; New York</p>
+      <div class="modal-story">
+        <ul class="exp-card-teaser" style="margin-bottom:0;">
+          <li>Launched three production AI/data pipelines (StatAgent, Winston Pro, Model 3) using AWS Lambda, ECS Fargate, Step Functions, S3, and Bedrock to automate client data workflows, eliminating 4&ndash;6 hours/week of manual execution and establishing a reusable serverless pattern across the engineering team.</li>
+          <li>Built Winston Pro's Retrieval-Augmented Generation (RAG) pipeline by ingesting YouTube transcripts, chunking content, generating embeddings via AWS Bedrock Titan, and storing vectors in PostgreSQL pgvector for semantic search, enabling enterprise clients to query project datasets through a conversational AI interface.</li>
+          <li>Quantified AI-generated insights by building StatAgent's statistical engine with VADER sentiment analysis and TF-IDF keyword extraction on private TikTok/social datasets, producing auditable deliverables where every statistic traces directly to source data.</li>
+          <li>Architected a social media segmentation pipeline (Persona Builder) using LLM-based feature extraction, embeddings, and clustering on TikTok/Douyin data to generate client-facing persona profiles, enabling per-client reuse through prompt customization alone.</li>
+          <li>Led intern recruitment for the next engineering cohort by screening candidates, conducting technical interviews, and contributing to onboarding curriculum design to scale the data engineering team.</li>
+        </ul>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">AWS Lambda</span><span class="tag">ECS Fargate</span><span class="tag">Step Functions</span><span class="tag">S3</span><span class="tag">Bedrock</span><span class="tag">RAG</span><span class="tag">pgvector</span><span class="tag">MLOps</span>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('exp1')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-exp2" onclick="closeModalOutside(event,'exp2')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('exp2')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-logo"><img src="assets/images/logos/mckinsey.png" alt="McKinsey.org"/></div>
+    <div class="modal-body">
+      <p class="modal-tag">Leadership &amp; Problem Solving Development</p>
+      <h2 class="modal-title">Leadership &amp; Problem Solving Development</h2>
+      <p class="modal-org"><i class="fas fa-building"></i> McKinsey.org Forward Program</p>
+      <div class="modal-story">
+        <ul class="exp-card-teaser" style="margin-bottom:0;">
+          <li>Selected for McKinsey.org's competitive 10-week Forward Program, completing modules in structured problem-solving, communicating for impact, adaptability &amp; resilience, and digital &amp; AI essentials across self-paced courses and mandatory live webinars.</li>
+          <li>Applied structured problem-solving frameworks, including hypothesis-led analysis, issue decomposition, and evidence-based recommendation development, to a real-world case assignment, strengthening the ability to break down ambiguous problems and synthesize findings into actionable decisions.</li>
+          <li>Strengthened executive communication and digital leadership skills by practicing audience-centered messaging, structured storytelling, and responsible GenAI adoption strategies, earning a McKinsey.org Forward digital badge upon program completion.</li>
+        </ul>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">Structured Problem-Solving</span><span class="tag">Executive Communication</span><span class="tag">Adaptability</span><span class="tag">Digital &amp; AI Essentials</span>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('exp2')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-exp3" onclick="closeModalOutside(event,'exp3')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('exp3')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-logo"><img src="assets/images/logos/northeastern.png" alt="Northeastern University"/></div>
+    <div class="modal-body">
+      <p class="modal-tag">Campus Operations &middot; Dec 2024 &ndash; Present</p>
+      <h2 class="modal-title">Proctor</h2>
+      <p class="modal-org"><i class="fas fa-map-marker-alt"></i> Residential Security Office &middot; Northeastern University, Boston, MA</p>
+      <div class="modal-story">
+        <ul class="exp-card-teaser" style="margin-bottom:0;">
+          <li>Consistently provided resident-centered service at the front desk, verifying credentials, managing guest access, and addressing inquiries with professionalism and empathy.</li>
+          <li>Completed 428+ hours of proctoring service and 40+ hours of standby coverage, demonstrating reliability and commitment to campus safety across all shifts.</li>
+          <li>Responded to alarms and suspicious activities, documenting incidents and escalating concerns to supervisors and NUPD in accordance with established protocols.</li>
+          <li>Guided and supported newly hired proctors by clarifying operational procedures and providing on-shift assistance, contributing to smoother team onboarding.</li>
+        </ul>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">Campus Safety</span><span class="tag">Incident Response</span><span class="tag">Team Onboarding</span><span class="tag">Customer Service</span>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('exp3')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-exp4" onclick="closeModalOutside(event,'exp4')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('exp4')"><i class="fas fa-times"></i></button>
+    <div class="modal-cover-logo"><img src="assets/images/logos/technologics.png" alt="Technologics Global"/></div>
+    <div class="modal-body">
+      <p class="modal-tag">AI / Machine Learning &middot; Sep 2023</p>
+      <h2 class="modal-title">AI/ML Engineer</h2>
+      <p class="modal-org"><i class="fas fa-building"></i> Technologics Global Pvt. Ltd. &middot; India</p>
+      <div class="modal-story">
+        <ul class="exp-card-teaser" style="margin-bottom:0;">
+          <li>Developed a high-accuracy multi-class classification model (95%) using Support Vector Machine (SVM) on the Iris dataset to categorize flower species based on petal and sepal dimensions.</li>
+          <li>Implemented a structured ML pipeline involving data wrangling, feature selection, and data normalization on a dataset of 150 samples across 3 classes and 4 features, followed by exploratory data analysis (EDA), model training, and performance evaluation using Python, pandas, scikit-learn, and NumPy.</li>
+          <li>Compared model performance across linear, polynomial, and RBF kernels, visualizing decision boundaries using matplotlib to understand class separation.</li>
+          <li>Validated model quality through classification reports and visual insights, reinforcing understanding of supervised learning and non-linear classification techniques.</li>
+        </ul>
+      </div>
+      <div class="project-tags" style="margin-bottom:1.5rem;">
+        <span class="tag">Python</span><span class="tag">SVM</span><span class="tag">scikit-learn</span><span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">matplotlib</span>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-outline" onclick="closeModal('exp4')"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
   <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
@@ -967,9 +1352,28 @@
   <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<footer>© 2026 DHANYA SRI KOTHAPALLY &nbsp;·&nbsp; BUILT WITH ❤️ &nbsp;·&nbsp; HOSTED ON GITHUB PAGES</footer>
+<footer>© 2026 Dhanya Sri Kothapally · All Rights Reserved · Built with ❤️ · Hosted on GitHub Pages</footer>
 
 <script>
+// ── SEE MORE PROJECTS ──
+function toggleMoreProjects(){
+  const more = document.getElementById('moreProjects');
+  const btn = document.getElementById('seeMoreBtn');
+  if(more.style.display === 'none'){
+    more.style.display = 'grid';
+    btn.innerHTML = '<i class="fas fa-minus" style="margin-right:0.5rem;"></i> Show Less';
+  } else {
+    more.style.display = 'none';
+    btn.innerHTML = '<i class="fas fa-plus" style="margin-right:0.5rem;"></i> See More Projects';
+  }
+}
+
+// ── HAMBURGER MENU ──
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+
 // ── PARTICLES ──
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
@@ -1025,9 +1429,22 @@ function closeLightboxOutside(e){
   if(e.target===document.getElementById('lightbox')) closeLightbox();
 }
 document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
   if(e.key==='ArrowLeft') lightboxNav(-1);
   if(e.key==='ArrowRight') lightboxNav(1);
+  if(e.key==='Escape') closeLightbox();
 });
+
+// ── PHOTOGRAPHY LIGHTBOX ──
+// Reuses the same lightbox as the GLI gallery. 17 unique photos.
+const photoPics = Array.from({length:17}, (_,i)=>`assets/images/photography/photo-${i+1}.jpeg`);
+function openPhotoLightbox(idx){
+  lbImgs = photoPics;
+  lbIdx = idx;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
 
 // ── MODALS ──
 function openModal(id){
